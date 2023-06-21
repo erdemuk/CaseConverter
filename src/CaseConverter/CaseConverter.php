@@ -1,35 +1,27 @@
 <?php
 
 namespace CaseConverter;
-use CaseConverter\Case;
+
+use CaseConverter\Abstract\BaseCase;
 
 class CaseConverter
 {
-    protected static array $caseClasses = [
-        'snake_case' => Case\SnakeCase::class,
-        'kebab-case' => Case\KebabCase::class,
-        'camelCase' => Case\CamelCase::class,
-        'PascalCase' => Case\PascalCase::class,
-        'space case' => Case\SpaceCase::class,
-    ];
-
-    public static function convertCase($input, string $case)
+    public static function convertCase($input, BaseCase $case, BaseCase $fromCase = null)
     {            
         if (is_string($input)) {
-            return self::convertStringCase($input, $case);
+            return self::convertStringCase($input, $case, $fromCase);
         } elseif (is_array($input)) {
-            return self::convertArrayKeysCase($input, $case);
+            return self::convertArrayKeysCase($input, $case, $fromCase);
         } else {
             return $input;
         }
     }
 
-    protected static function convertStringCase(string $string, string $case)
+    protected static function convertStringCase(string $string, BaseCase $convertClass, BaseCase $fromCase = null)
     {                        
         // Check if conversion rule exists for the given cases
-        if (isset(self::$caseClasses[$case])) {
-            $convertClass = self::$caseClasses[$case];
-            $convertedString = $convertClass::convert($string);
+        if (isset($convertClass)) {
+            $convertedString = $convertClass::convert($string, $fromCase);
         } else {
             // Handle other cases or fallback
             $convertedString = $string;
@@ -39,11 +31,11 @@ class CaseConverter
     }
 
 
-    private static function convertArrayKeysCase(array $array, string $case): array
+    private static function convertArrayKeysCase(array $array, BaseCase $case, BaseCase $fromCase = null): array
     {
         return array_combine(
-            array_map(fn ($key) => self::convertStringCase($key, $case), array_keys($array)),
-            array_map(fn ($value) => is_array($value) ? self::convertArrayKeysCase($value, $case) : $value, $array)
+            array_map(fn ($key) => self::convertStringCase($key, $case, $fromCase), array_keys($array)),
+            array_map(fn ($value) => is_array($value) ? self::convertArrayKeysCase($value, $case, $fromCase) : $value, $array)
         );
     }
 }

@@ -2,6 +2,11 @@
 
 use PHPUnit\Framework\TestCase;
 use CaseConverter\CaseConverter;
+use CaseConverter\Case\CamelCase;
+use CaseConverter\Case\KebabCase;
+use CaseConverter\Case\PascalCase;
+use CaseConverter\Case\SnakeCase;
+use CaseConverter\Case\SpaceCase;
 
 class CaseConverterTest extends TestCase
 {
@@ -10,7 +15,7 @@ class CaseConverterTest extends TestCase
         $input = 'hello_world';
         $expected = 'hello-world';
 
-        $converted = CaseConverter::convertCase($input, 'kebab-case');
+        $converted = CaseConverter::convertCase($input, new KebabCase);
         $this->assertEquals($expected, $converted);
     }
 
@@ -19,7 +24,7 @@ class CaseConverterTest extends TestCase
         $input = 'hello_world';
         $expected = 'helloWorld';
 
-        $converted = CaseConverter::convertCase($input, 'camelCase');
+        $converted = CaseConverter::convertCase($input, new CamelCase);
         
         $this->assertEquals($expected, $converted);
     }
@@ -29,7 +34,7 @@ class CaseConverterTest extends TestCase
         $input = 'hello_world';
         $expected = 'HelloWorld';
 
-        $converted = CaseConverter::convertCase($input, 'PascalCase');
+        $converted = CaseConverter::convertCase($input, new PascalCase);
         $this->assertEquals($expected, $converted);
     }
 
@@ -38,7 +43,7 @@ class CaseConverterTest extends TestCase
         $input = 'hello_world';
         $expected = 'hello world';
 
-        $converted = CaseConverter::convertCase($input, 'space case');
+        $converted = CaseConverter::convertCase($input, new SpaceCase);
         $this->assertEquals($expected, $converted);
     }
 
@@ -47,7 +52,7 @@ class CaseConverterTest extends TestCase
         $input = 'hello-world';
         $expected = 'hello_world';
 
-        $converted = CaseConverter::convertCase($input, 'snake_case');
+        $converted = CaseConverter::convertCase($input, new SnakeCase);
         $this->assertEquals($expected, $converted);
     }
 
@@ -56,7 +61,7 @@ class CaseConverterTest extends TestCase
         $input = 'hello-world';
         $expected = 'helloWorld';
 
-        $converted = CaseConverter::convertCase($input, 'camelCase');
+        $converted = CaseConverter::convertCase($input, new CamelCase);
         $this->assertEquals($expected, $converted);
     }
 
@@ -65,7 +70,7 @@ class CaseConverterTest extends TestCase
         $input = 'hello-world';
         $expected = 'HelloWorld';
 
-        $converted = CaseConverter::convertCase($input, 'PascalCase');
+        $converted = CaseConverter::convertCase($input, new PascalCase);
         $this->assertEquals($expected, $converted);
     }
 
@@ -74,7 +79,7 @@ class CaseConverterTest extends TestCase
         $input = 'hello-world';
         $expected = 'hello world';
 
-        $converted = CaseConverter::convertCase($input, 'space case');
+        $converted = CaseConverter::convertCase($input, new SpaceCase);
         $this->assertEquals($expected, $converted);
     }
 
@@ -83,7 +88,7 @@ class CaseConverterTest extends TestCase
         $input = 'helloWorld';
         $expected = 'hello_world';
 
-        $converted = CaseConverter::convertCase($input, 'snake_case');
+        $converted = CaseConverter::convertCase($input, new SnakeCase);
         $this->assertEquals($expected, $converted);
     }
 
@@ -92,7 +97,7 @@ class CaseConverterTest extends TestCase
         $input = 'helloWorld';
         $expected = 'hello-world';
 
-        $converted = CaseConverter::convertCase($input, 'kebab-case');
+        $converted = CaseConverter::convertCase($input, new KebabCase);
         $this->assertEquals($expected, $converted);
     }
 
@@ -101,7 +106,7 @@ class CaseConverterTest extends TestCase
         $input = 'helloWorld';
         $expected = 'HelloWorld';
 
-        $converted = CaseConverter::convertCase($input, 'PascalCase');
+        $converted = CaseConverter::convertCase($input, new PascalCase);
         $this->assertEquals($expected, $converted);
     }
 
@@ -110,7 +115,7 @@ class CaseConverterTest extends TestCase
         $input = 'helloWorld';
         $expected = 'hello world';
 
-        $converted = CaseConverter::convertCase($input, 'space case');
+        $converted = CaseConverter::convertCase($input, new SpaceCase);
         $this->assertEquals($expected, $converted);
     }
 
@@ -119,7 +124,7 @@ class CaseConverterTest extends TestCase
         $input = 'HelloWorld';
         $expected = 'hello_world';
 
-        $converted = CaseConverter::convertCase($input, 'snake_case');
+        $converted = CaseConverter::convertCase($input, new SnakeCase);
         $this->assertEquals($expected, $converted);
     }
 
@@ -128,7 +133,7 @@ class CaseConverterTest extends TestCase
         $input = 'HelloWorld';
         $expected = 'hello-world';
 
-        $converted = CaseConverter::convertCase($input, 'kebab-case');
+        $converted = CaseConverter::convertCase($input, new KebabCase);
         $this->assertEquals($expected, $converted);
     }
 
@@ -137,7 +142,7 @@ class CaseConverterTest extends TestCase
         $input = 'HelloWorld';
         $expected = 'helloWorld';
 
-        $converted = CaseConverter::convertCase($input, 'camelCase');
+        $converted = CaseConverter::convertCase($input, new CamelCase);
         $this->assertEquals($expected, $converted);
     }
 
@@ -146,7 +151,7 @@ class CaseConverterTest extends TestCase
         $input = 'HelloWorld';
         $expected = 'hello world';
 
-        $converted = CaseConverter::convertCase($input, 'space case');
+        $converted = CaseConverter::convertCase($input, new SpaceCase);
         $this->assertEquals($expected, $converted);
     }
 
@@ -155,7 +160,7 @@ class CaseConverterTest extends TestCase
         $input = 'hello world';
         $expected = 'hello_world';
 
-        $converted = CaseConverter::convertCase($input, 'snake_case');
+        $converted = CaseConverter::convertCase($input, new SnakeCase);
         $this->assertEquals($expected, $converted);
     }
 
@@ -164,7 +169,7 @@ class CaseConverterTest extends TestCase
         $input = 'hello world';
         $expected = 'hello-world';
 
-        $converted = CaseConverter::convertCase($input, 'kebab-case');
+        $converted = CaseConverter::convertCase($input, new KebabCase);
         $this->assertEquals($expected, $converted);
     }
 
@@ -173,7 +178,7 @@ class CaseConverterTest extends TestCase
         $input = 'hello world';
         $expected = 'helloWorld';
 
-        $converted = CaseConverter::convertCase($input, 'camelCase');
+        $converted = CaseConverter::convertCase($input, new CamelCase);
         $this->assertEquals($expected, $converted);
     }
 
@@ -182,7 +187,7 @@ class CaseConverterTest extends TestCase
         $input = 'hello world';
         $expected = 'HelloWorld';
 
-        $converted = CaseConverter::convertCase($input, 'PascalCase');
+        $converted = CaseConverter::convertCase($input, new PascalCase);
         $this->assertEquals($expected, $converted);
     }
     
@@ -195,22 +200,26 @@ class CaseConverterTest extends TestCase
         ];
 
         $expected = [
-            'camelCase' => [
+            [
+                'class' => new CamelCase,
                 'firstName' => 'John',
                 'lastName' => 'Doe',
                 'emailAddress' => 'john.doe@example.com'
             ],
-            'kebab-case' => [
+            [
+                'class' => new KebabCase,
                 'first-name' => 'John',
                 'last-name' => 'Doe',
                 'email-address' => 'john.doe@example.com'
             ],
-            'PascalCase' => [
+            [
+                'class' => new PascalCase,
                 'FirstName' => 'John',
                 'LastName' => 'Doe',
                 'EmailAddress' => 'john.doe@example.com'
             ],
-            'space case' => [
+            [
+                'class' => new SpaceCase,
                 'first name' => 'John',
                 'last name' => 'Doe',
                 'email address' => 'john.doe@example.com'
@@ -218,7 +227,9 @@ class CaseConverterTest extends TestCase
         ];
 
         foreach ($expected as $case => $result) {
-            $converted = CaseConverter::convertCase($input, $case);
+            $converted = CaseConverter::convertCase($input, $result['class']);
+            unset($converted['class']);
+            unset($result['class']);
             $this->assertEquals($result, $converted);
         }
     }
@@ -226,30 +237,32 @@ class CaseConverterTest extends TestCase
     public function testRecursiveArrayConversions()
     {
         $input = [
-            'first_name' => 'John',
-            'last_name' => 'Doe',
-            'email_address' => 'john.doe@example.com',
+            'firstName' => 'John',
+            'lastName' => 'Doe',
+            'emailAddress' => 'john.doe@example.com',
             'address' => [
-                'street_address' => '123 Main St',
+                'streetAddress' => '123 Main St',
                 'city' => 'Anytown',
                 'state' => 'NY',
-                'zip_code' => '12345'
+                'zipCode' => '12345'
             ]
         ];
 
         $expected = [
-            'camelCase' => [
-                'firstName' => 'John',
-                'lastName' => 'Doe',
-                'emailAddress' => 'john.doe@example.com',
+            [
+                'class' => new SnakeCase,
+                'first_name' => 'John',
+                'last_name' => 'Doe',
+                'email_address' => 'john.doe@example.com',
                 'address' => [
-                    'streetAddress' => '123 Main St',
+                    'street_address' => '123 Main St',
                     'city' => 'Anytown',
                     'state' => 'NY',
-                    'zipCode' => '12345'
+                    'zip_code' => '12345'
                 ]
             ],
-            'kebab-case' => [
+            [
+                'class' => new KebabCase,
                 'first-name' => 'John',
                 'last-name' => 'Doe',
                 'email-address' => 'john.doe@example.com',
@@ -260,7 +273,8 @@ class CaseConverterTest extends TestCase
                     'zip-code' => '12345'
                 ]
             ],
-            'PascalCase' => [
+            [
+                'class' => new PascalCase,
                 'FirstName' => 'John',
                 'LastName' => 'Doe',
                 'EmailAddress' => 'john.doe@example.com',
@@ -271,7 +285,8 @@ class CaseConverterTest extends TestCase
                     'ZipCode' => '12345'
                 ]
             ],
-            'space case' => [
+            [
+                'class' => new SpaceCase,
                 'first name' => 'John',
                 'last name' => 'Doe',
                 'email address' => 'john.doe@example.com',
@@ -284,9 +299,24 @@ class CaseConverterTest extends TestCase
             ],
         ];
 
-        foreach ($expected as $case => $result) {
-            $converted = CaseConverter::convertCase($input, $case);
+        foreach ($expected as $result) {
+            $converted = CaseConverter::convertCase($input, $result['class']);
+            unset($converted['class']);
+            unset($result['class']);
             $this->assertEquals($result, $converted);
         }
+    }
+
+    public function testSpaceCaseToPascalCaseWithoutDetection()
+    {
+        $input = 'hello world';
+        $expected = 'HelloWorld';
+
+        $converted = CaseConverter::convertCase(
+            input: $input, 
+            case: new PascalCase, 
+            fromCase: new SpaceCase
+        );
+        $this->assertEquals($expected, $converted);
     }
 }

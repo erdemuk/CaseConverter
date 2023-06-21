@@ -1,51 +1,18 @@
 <?php
 
 namespace CaseConverter\Case;
-use CaseConverter\CaseDetector;
 
-class SpaceCase
+use CaseConverter\Abstract\BaseCase;
+
+class SpaceCase extends BaseCase
 {
-    public static function convert($string): string
+    public static function convertWordsToCase(array $words): string
     {
-        $originalCase = CaseDetector::detectCase($string);
-
-        switch ($originalCase) {
-            case 'snake_case':
-                $string = self::convertFromSnakeCase($string);
-                break;
-            case 'kebab-case':
-                $string = self::convertFromKebabCase($string);
-                break;
-            case 'camelCase':
-                $string = self::convertFromCamelCase($string);
-                break;
-            case 'PascalCase':
-                $string = self::convertFromPascalCase($string);
-                break;
-            default:
-                $string = $string;
-        }
-
-        return $string;
+        return implode(' ', $words);
     }
-
-    public static function convertFromSnakeCase($input): string
+    
+    public static function parse(string $string) : array
     {
-        return str_replace('_', ' ', $input);
-    }
-
-    public static function convertFromKebabCase($input): string
-    {
-        return str_replace('-', ' ', $input);
-    }
-
-    public static function convertFromCamelCase($input): string
-    {
-        return strtolower(preg_replace('/([a-z])([A-Z])/', '$1 $2', $input));
-    }
-
-    public static function convertFromPascalCase($input): string
-    {
-        return strtolower(preg_replace('/(?<!^)[A-Z]/', ' $0', $input));
+        return explode(' ', $string);
     }
 }

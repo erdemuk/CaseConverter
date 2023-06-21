@@ -16,7 +16,7 @@ composer require case-converter
 use CaseConverter\CaseConverter;
 
 $input = 'hello_world';
-$converted = CaseConverter::convertCase($input, 'kebab-case');
+$converted = CaseConverter::convertCase($input, new KebabCase);
 
 echo $converted; // hello-world
 ```
@@ -25,11 +25,11 @@ In the above example, the convertCase method is used to convert the text hello_w
 
 ## Supported Letter Case Formats
 
-- **snake_case**: Example: `hello_world`
-- **kebab-case**: Example: `hello-world`
-- **camelCase**: Example: `helloWorld`
+- **SnakeCase**: Example: `hello_world`
+- **KebabCase**: Example: `hello-world`
+- **CamelCase**: Example: `helloWorld`
 - **PascalCase**: Example: `HelloWorld`
-- **space case**: Example: `Hello World`
+- **SpaceCase**: Example: `Hello World`
 
 ## Text Conversion
 
@@ -41,7 +41,7 @@ CaseConverter can convert a single text or texts within an array. Below are some
 use CaseConverter\CaseConverter;
 
 $input = 'hello_world';
-$converted = CaseConverter::convertCase($input, 'kebab-case');
+$converted = CaseConverter::convertCase($input, new KebabCase);
 
 echo $converted; // hello-world
 ```
@@ -57,7 +57,7 @@ $input = [
     'email_address' => 'john.doe@example.com'
 ];
 
-$converted = CaseConverter::convertCase($input, 'PascalCase');
+$converted = CaseConverter::convertCase($input, new PascalCase);
 
 print_r($converted);
 /*
@@ -80,9 +80,9 @@ use CaseConverter\CaseConverter;
 
 $input = [
     'user' => [
-        'first_name' => 'John',
-        'last_name' => 'Doe',
-        'email_address' => 'john.doe@example.com'
+        'firstName' => 'John',
+        'lastName' => 'Doe',
+        'emailAddress' => 'john.doe@example.com'
     ],
     'address' => [
         'street' => '123 Main St',
@@ -91,7 +91,7 @@ $input = [
     ]
 ];
 
-$converted = CaseConverter::convertCase($input, 'snake_case');
+$converted = CaseConverter::convertCase($input, new SnakeCase);
 
 print_r($converted);
 /*
