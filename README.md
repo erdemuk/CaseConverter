@@ -7,7 +7,7 @@ CaseConverter is a powerful PHP library that provides a convenient way to conver
 You can install CaseConverter to your project using Composer:
 
 ```shell
-composer require case-converter
+composer require erdemuk/case-converter
 ```
 
 ## Usage
