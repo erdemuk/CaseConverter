@@ -8,11 +8,11 @@ class CaseDetector
 {
     public static function detect($string): string
     {
-        if (strpos($string, '_') !== false) {
+        if (str_contains($string, '_')) {
             return Case\SnakeCase::class;
-        } elseif (strpos($string, '-') !== false) {
+        } elseif (str_contains($string, '-')) {
             return Case\KebabCase::class;
-        } elseif (strpos($string, ' ') !== false) {
+        } elseif (str_contains($string, ' ')) {
             return Case\SpaceCase::class;            
         } elseif (preg_match('/^[a-z][A-Za-z0-9]*$/', $string)) {
             return Case\CamelCase::class;
@@ -33,7 +33,7 @@ class CaseDetector
         }
 
         if (!$case) {
-            return $string;
+            return [$string];
         }
 
         return array_map('mb_strtolower', $case::parse($string));
