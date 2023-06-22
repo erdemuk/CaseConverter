@@ -3,7 +3,7 @@
     "description": "The StringConverter package provides a convenient way to convert strings or array keys to the desired case format.",
     "type": "library",
     "require": {
-        "php": ">=8.2.5"
+        "php": ">=8.2"
     },
     "require-dev": {
         "phpunit/phpunit": "^10.2"
